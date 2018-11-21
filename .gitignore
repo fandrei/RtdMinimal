@@ -1,0 +1,9 @@
+*.suo
+*.*.user
+/.vs/
+
+[Bb]in/
+[Oo]bj/
+/_Bin/
+
+/packages/
