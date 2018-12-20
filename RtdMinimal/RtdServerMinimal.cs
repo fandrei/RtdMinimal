@@ -18,6 +18,7 @@ namespace RtdMinimal
     {
         public RtdServerMinimal()
         {
+            Trace.WriteLine(">>> Exception");
             throw new ApplicationException("TEST_EXCEPTION");
         }
 

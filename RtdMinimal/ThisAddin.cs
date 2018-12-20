@@ -28,20 +28,11 @@ namespace RtdMinimal
 
         private void ApplicationOnWorkbookOpen(Excel.Workbook wb)
         {
-            ReportRam();
+            Trace.WriteLine(nameof(ApplicationOnWorkbookOpen));
         }
 
         public void AutoClose()
         {
-        }
-
-        public static void ReportRam()
-        {
-            var process = Process.GetCurrentProcess();
-            var ramUsedTotal = process.PrivateMemorySize64;
-            var ramUsedManaged = GC.GetTotalMemory(true);
-
-            Trace.WriteLine($"\t\t>>>\t{ramUsedManaged:n0} {ramUsedTotal:n0}");
         }
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
