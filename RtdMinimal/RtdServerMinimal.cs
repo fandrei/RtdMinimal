@@ -16,6 +16,11 @@ namespace RtdMinimal
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class RtdServerMinimal : ExcelRtdServer
     {
+        public RtdServerMinimal()
+        {
+            throw new ApplicationException("TEST_EXCEPTION");
+        }
+
         protected override bool ServerStart()
         {
             Trace.WriteLine("\t--- RtdServerMinimal.ServerStart()");

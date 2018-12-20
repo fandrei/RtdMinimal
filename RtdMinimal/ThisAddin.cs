@@ -17,6 +17,11 @@ namespace RtdMinimal
         {
             ComServer.DllRegisterServer();
 
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+            AppDomain.CurrentDomain.SetData("appdomainidentity", "handleddomain");
+
+            ExcelIntegration.RegisterUnhandledExceptionHandler(OnAddinException);
+
             var application = ExcelUtil.Application;
             application.WorkbookOpen += ApplicationOnWorkbookOpen;
         }
@@ -37,6 +42,25 @@ namespace RtdMinimal
             var ramUsedManaged = GC.GetTotalMemory(true);
 
             Trace.WriteLine($"\t\t>>>\t{ramUsedManaged:n0} {ramUsedTotal:n0}");
+        }
+
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            ReportException((Exception)args.ExceptionObject);
+        }
+
+        private static object OnAddinException(object exceptionObject)
+        {
+            var exception = exceptionObject as Exception;
+            if (exception != null)
+                ReportException(exception);
+            return exceptionObject;
+        }
+
+        private static void ReportException(Exception exception)
+        {
+            Trace.WriteLine(exception);
+            Debugger.Break();
         }
     }
 }
