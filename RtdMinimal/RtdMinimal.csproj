@@ -71,6 +71,7 @@
     <None Include="Properties\ExcelDna.Build.props" />
     <None Include="RtdMinimal-AddIn.xll.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
