@@ -21,12 +21,12 @@ namespace RtdMinimal
 
         public override void Write(string message)
         {
-            Trace.WriteLine($"### {message}");
+            Trace.WriteLine($"{Name} {message}");
         }
 
         public override void WriteLine(string message)
         {
-            Trace.WriteLine($"### {message}");
+            Trace.WriteLine($"{Name} {message}");
         }
     }
 }
