@@ -18,8 +18,8 @@ namespace RtdMinimal
     {
         public RtdServerMinimal()
         {
-            Trace.WriteLine(">>> Exception");
-            throw new ApplicationException("TEST_EXCEPTION");
+            //Trace.WriteLine(">>> Exception");
+            //throw new ApplicationException("TEST_EXCEPTION");
         }
 
         protected override bool ServerStart()
