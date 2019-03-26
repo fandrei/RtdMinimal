@@ -24,6 +24,9 @@ namespace RtdMinimal
 
             var application = ExcelUtil.Application;
             application.WorkbookOpen += ApplicationOnWorkbookOpen;
+
+            var log = new ExcelDnaLogListener();
+            log.WriteLine(nameof(AutoOpen));
         }
 
         private void ApplicationOnWorkbookOpen(Excel.Workbook wb)
