@@ -33,6 +33,7 @@ namespace RtdMinimal
 
         public void AutoClose()
         {
+            ComServer.DllUnregisterServer();
         }
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
