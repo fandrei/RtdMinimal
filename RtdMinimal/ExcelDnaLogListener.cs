@@ -36,7 +36,7 @@ namespace RtdMinimal
             Trace.Write($"{Name} {message}");
             lock (Sync)
             {
-                _writer.Write($"{Name} {message}");
+                _writer.Write(message);
                 _writer.Flush();
             }
         }
@@ -46,7 +46,7 @@ namespace RtdMinimal
             Trace.WriteLine($"{Name} {message}");
             lock (Sync)
             {
-                _writer.WriteLine($"{Name} {message}");
+                _writer.WriteLine(message);
                 _writer.Flush();
             }
         }
