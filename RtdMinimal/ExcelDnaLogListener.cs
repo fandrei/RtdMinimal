@@ -27,31 +27,42 @@ namespace RtdMinimal
             lock (Sync)
             {
                 if (_writer == null)
+                {
+                    _writer = AppDomain.CurrentDomain.GetData(LogDataName) as StreamWriter;
+                    if (_writer != null)
+                        return;
+
                     _writer = new StreamWriter($"Log_{DateTime.Now:yyyy-MM-dd HH_mm_ss.fffffff}.txt");
+                    AppDomain.CurrentDomain.SetData(LogDataName, _writer);
+
+                    WriteFile("Init log");
+                }
             }
         }
 
         public override void Write(string message)
         {
-            Trace.Write($"{Name} {message}");
-            lock (Sync)
-            {
-                _writer.Write(message);
-                _writer.Flush();
-            }
+            Trace.WriteLine($"{Name} {message}");
+            WriteFile(message);
         }
 
         public override void WriteLine(string message)
         {
             Trace.WriteLine($"{Name} {message}");
+            WriteFile(message);
+        }
+
+        private static void WriteFile(string message)
+        {
             lock (Sync)
             {
-                _writer.WriteLine(message);
+                _writer.Write(AppDomain.CurrentDomain.Id + " " + message + "\r\n");
                 _writer.Flush();
             }
         }
 
-        private static StreamWriter _writer;
         static readonly object Sync = new object();
+        private static StreamWriter _writer;
+        private const string LogDataName = "ExcelDnaLogListener";
     }
 }
