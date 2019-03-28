@@ -20,7 +20,7 @@
     <!--
       Enable/Disable setting the debug options when building the project
     -->
-    <RunExcelDnaSetDebuggerOptions Condition="'$(RunExcelDnaSetDebuggerOptions)' == ''">true</RunExcelDnaSetDebuggerOptions>
+    <RunExcelDnaSetDebuggerOptions Condition="'$(RunExcelDnaSetDebuggerOptions)' == ''">false</RunExcelDnaSetDebuggerOptions>
 
     <!--
       Override the path of EXCEL.EXE used for debugging the project, if you need
