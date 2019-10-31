@@ -75,7 +75,7 @@
     <None Include="RtdMinimal-AddIn.dna">
       <SubType>Designer</SubType>
     </None>
-    <None Include="RtdMinimal-AddIn.xll.config">
+    <None Include="app.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
